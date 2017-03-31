@@ -15,6 +15,10 @@ app.get('/about',function(req,res){
   res.sendFile(__dirname + '/public/about.html');
 });
 
+app.get('/EDEIOT',function(req,res){
+  res.sendFile(__dirname + '/public/edeiot.html');
+});
+
 app.get('/sitemap',function(req,res){
   res.sendFile(__dirname + '/public/sitemap.html');
 });
