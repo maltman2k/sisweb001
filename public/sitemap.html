@@ -1,48 +1,1151 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Express HTML</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="">
+	<meta name="author" content="Andre Powroznik, Doughnut Machine Operator, Johnson Controls, Inc.">
+	<link rel="icon" href="JC Logo.ico">
+
+	<title>Easy Chiller Connect</title>
+
+	<!-- Bootstrap core CSS -->
+	<!-- <link href="https://easyede-dev.azurewebsites.net/css/bootstrap.min.css" rel="stylesheet">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
-    />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<link href="styles/bootstrap.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">-->
+
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
+	
+
+	
+	
+	<!-- Google Fonts call. Font Used Open Sans & Raleway -->
+	<link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
+  	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+	
+	
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-67773840-1', 'auto');
+	  ga('send', 'pageview');
+	</script> -->
+
+	<style type='text/css'>
+	 .table_header_center {
+			text-align: center !important;
+	  } 
+
+	.center-block1{
+		width: 230px;
+		margin: 0 auto;
+	}
+	
+    body {
+        padding-top: 60px;
+		margin-left:10%;
+		margin-right:10%;
+      }
+	  
+	.cont {
+	text-align:center;
+	margin-top:30px;
+	} 
+	
+	.cont ok {
+		color:#b2c831;
+	}
+
+	.cont bad {
+		color:#fa1d2d;
+	}
+	
+	
+
+.dash-unit hr {
+  	border: 0;
+  	border-top: 1px solid #151515;
+  	border-top-style: dashed;
+	margin-top:3px;
+}
+
+.dash-unit h1 {
+	font-family: 'Raleway', sans-serif;
+	font-weight:300;
+	font-size: 20px;
+	line-height: 2px;
+	letter-spacing: 0px;
+	color: #ffffff;
+	padding-top:10px;
+	padding-left:5px;
+	margin-top:2px;
+	text-align:center;
+}
+
+.dash-unit h2 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 30px;
+	line-height: 26px;
+	letter-spacing: 0px;
+	color: #ffffff;
+	padding-top:10px;
+	padding-left:5px;
+	margin-top:2px;
+	text-align:center;
+}
+
+
+.dash-unit h3 {
+	font-weight:300;
+	font-size: 15px;
+	line-height: 2px;
+	letter-spacing: 0px;
+	color: #b2c831;
+	padding-top:10px;
+	padding-left:5px;
+	margin-top:2px;
+	text-align:center;
+}
+
+
+.dash-unit p {
+	font-size: 14px;
+	font-weight: 200;
+	line-height: 16px;
+	color: inherit;
+	margin: 0 0 10px;
+	padding:5px;
+ }
+
+.dash-unit h4 {
+	padding-left:5px;
+	margin-top:2px;
+	font-size: 13px;
+	font-weight:lighter;
+	line-height: 1;
+	letter-spacing: 0px;
+	color: #fff;
+}
+
+.dash-unit bold{
+	font-family: 'Open Sans', sans-serif;
+	font-size:26px;
+	font-weight:bold;
+	color:#fff;
+	vertical-align:middle;
+}
+	
+	
+	</style>
+
+
   </head>
   <body>
-    <div style="margin: 100px">
-      <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
-          <a class="navbar-brand" href="/">Express HTML</a>
-          <ul class="nav navbar-nav">
-            <li class="active">
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/EDEIOT">EDE</a>
-            </li>
-            <li>
-              <a href="/about">About</a>
-            </li>
-            <li>
-              <a href="/sitemap">Sitemap</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <div class="jumbotron" style="padding: 40px">
-        <h1>Hello, world from Sitemap</h1>
-        <p>Site Map.</p>
-        <p>
-          <a class="btn btn-primary btn-lg" href="#" role="button"
-            >Learn more</a
-          >
-        </p>
-      </div>
-    </div>
-  </body>
+	<nav class="navbar navbar-inverse navbar-static-top">
+	    <a class="navbar-brand" href="https://www.johnsoncontrols.com/" target="_blank">
+        </a>
+		<ul class="nav navbar-nav">
+		  <li class="active">
+			<a href="/">Home</a>
+		  </li>
+		  <li class="active">
+			<a href="/edeiot.html">Dashboard</a>
+		  </li>
+		</ul>
+	</nav>
+
+
+	
+
+	<div class="container-fluid" role="main">
+	
+		<div class="row">
+
+		<div class="col-sm-6 col-lg-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Panel 1</h3>
+				</div>
+				<div class="panel-body">
+				<Br>
+				<Br>
+				
+	      		<div class="dash-unit cont">
+					<p><bold>13</bold>| Pending Tasks</p>
+				</div>
+				      <div class="progress">
+						  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+							<span class="sr-only">60% Complete</span>
+						  </div>
+						</div>
+					<Br>
+					<Br>
+					<Br>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Chiller Efficiency</h3>
+				</div>
+				<div class="panel-body center-block1">
+					
+					<canvas id="canvas" width="200" height="200">
+				
+				</div>
+			</div>
+		</div>
+ 		<div class="col-sm-6 col-lg-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Monthly Alarms</h3>
+				</div>
+				<div class="panel-body center-block1">
+				
+					<div class="cont">
+						<br>
+						<h2> <bold> <div id="ValueEDE">2578</div> </bold> </h2>
+						<h4><img src="images/down.png" alt="" >-23.88%</h4>
+						<br><br>
+					</div>
+				
+				</div>
+			</div>
+		</div>		
+ 		<div class="col-sm-6 col-lg-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Production</h3> 
+				</div>
+				<div class="panel-body center-block1">
+				
+					<div class="cont">
+						<br>
+						<h2><bold>145.0K</bold></h2>
+						<h4><img src="images/up.png" alt="" > 23.88%</h4>
+						<br><br>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+
+		
+	</div><!-- end row-->		
+	
+	
+	
+	<div class="row">
+		<div class="col-sm-6 col-lg-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Temperature Setpoint</h3>
+				</div>
+				<div class="panel-body center-block1">
+					
+						<canvas id="gauge"></canvas>
+						<div id="console"></div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Pressure</h3>
+				</div>
+				<div class="panel-body center-block1">
+					<canvas id="gauge1"></canvas>
+					<div id="console1"></div>
+				</div>	
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-3">
+			<div class="panel panel-default" >
+				<div class="panel-heading">
+					<h3 class="panel-title">Primary Current</h3>
+				</div>
+				<div class="panel-body center-block1">
+					<canvas id="gauge2"></canvas>
+					<div id="console2"></div>
+				</div>	
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-3">
+			<div class="panel panel-default" >
+				<div class="panel-heading">
+					<h3 class="panel-title">Main Voltage</h3>
+				</div>
+				<div class="panel-body center-block1">
+					<canvas id="gauge3"></canvas>
+					<div id="console3"></div>
+				</div>	
+			</div>
+		</div>
+	</div><!-- end row-->
+	
+   <div class="row">
+	<div class="panel panel-default" id="panelmaingraph" >
+				<div class="panel-heading">
+					<h3 class="panel-title" id="graphtitle">Trend</h3>
+				</div>
+				<div class="panel-body" id="graphboby">
+					<div id="graph_container003"></div>
+					 					 
+				</div>
+	</div>
+	<div class="panel-body hidden" id="tableboby">
+					<div id="div_table">
+					</div>
+	</div>		
+  </div><!-- end row-->
+
+     <div class="row">
+	<div class="panel panel-default" id="panelmaingraph" >
+				<div class="panel-heading">
+					<h3 class="panel-title" id="graphtitle">Trend</h3>
+				</div>
+				<div class="panel-body" id="graphboby">
+					<div id="graph_container001"></div>
+					 					 
+				</div>
+	</div>
+	<div class="panel-body hidden" id="tableboby">
+					<div id="div_table">
+					</div>
+	</div>		
+  </div><!-- end row-->
+</div><!-- /.container -->
+
+<script>
+    var myVar=setInterval(function(){myTimer()},2000);
+    var i=0;
+    var EDE_Value_TempSP=25.3;
+    var EDE_Value_Pressure=70;
+
+</script>
+<script>
+/*-----------------------------------------------------------------------------------
+	var INI_DAYS_GRAPH=2;//Days to display graph
+	var chart1 = "done";
+	var chart;
+	var dataTable;
+	// Set chart options
+        var options = {
+			pointSize: 8,
+			legend: 'none',
+			backgroundColor: '#000000',
+		    chartArea: {
+			backgroundColor: {
+				stroke: 'FFFFFF',
+				strokeWidth: 1
+				}
+			},
+			hAxis: {
+				title: 'Time',
+				gridlines: { color: '#4D4D4D'}, 
+				format:'dd/MM/yyyy HH:mm',
+				textStyle:{color: '#FFF'},
+				titleTextStyle: { color: '#FFF' }
+			},
+			vAxis: {
+				title: 'Value',
+				gridlines: { color: '#4D4D4D'},
+				format:'decimal',
+				textStyle:{color: '#FFF'},
+				titleTextStyle: { color: '#FFF' }
+			},
+			series: {
+				0: { color: '#08338F', pointShape: 'circle'},
+			  }
+        };
+				
+
+	function start() {
+		$.ajax({
+			url : 'https://easyede-dev.azurewebsites.net/devices/0000-0000-0000-0000.json'
+		}).done(start_done);
+	}
+
+	function start_done(data) {
+		$('#device_name').text(data.device_name);
+
+
+		$('#select_device').change(updatePoints);
+
+		$('#select_point').change(update);
+
+		var dateFrom = new Date();
+		dateFrom.setDate(dateFrom.getDate() - INI_DAYS_GRAPH);
+		$('#input_from').val(moment(dateFrom).format("DD/MM/YYYY HH:mm"));
+		//$('#input_from').change(update);
+		//$('#input_from').change(function() {
+		//	var from = moment($('#input_from').val(), 'DD/MM/YYYY HH:mm').toDate();
+		//	var to = moment($('#input_to').val(), 'DD/MM/YYYY HH:mm').toDate();
+		//	var delta = to - from;
+		//	if (delta > 0) {
+		//		update();		
+		//	};
+		//});
+		
+		var prev_valFrom;
+		$('#input_from').focus(function() {
+			prev_valFrom = $(this).val();
+		}).change(function(){
+					$(this).unbind('focus');
+					var conf;
+					var from = moment($('#input_from').val(), 'DD/MM/YYYY HH:mm').toDate();
+					var to = moment($('#input_to').val(), 'DD/MM/YYYY HH:mm').toDate();
+					var delta = to - from;
+					if (delta > 0) {
+						conf = true;		
+					};
+					
+					if(conf == true){
+						update();
+					}
+					else{
+						$(this).val(prev_valFrom);
+						$(this).bind('focus');
+					}
+		});
+		
+		var dateTo = new Date();
+		$('#input_to').val(moment(dateTo).format("DD/MM/YYYY HH:mm"));
+		//$('#input_to').change(update);
+		var prev_valTo;
+		$('#input_to').focus(function() {
+			prev_valTo = $(this).val();
+		}).change(function(){
+					$(this).unbind('focus');
+					var conf;
+					var from = moment($('#input_from').val(), 'DD/MM/YYYY HH:mm').toDate();
+					var to = moment($('#input_to').val(), 'DD/MM/YYYY HH:mm').toDate();
+					var delta = to - from;
+					if (delta > 0) {
+						conf = true;	
+						if (to > moment().toDate()){
+							conf = false;
+						};
+					};
+					
+					if(conf == true){
+						update();
+					}
+					else{
+						$(this).val(prev_valTo);
+						$(this).bind('focus');
+					}
+		});
+
+		$('#button_left').click(onButtonLeft);
+		$('#button_minus').click(onButtonMinus);
+		$('#button_plus').click(onButtonPlus);
+		$('#button_right').click(onButtonRight);
+
+		updatePoints();
+	}
+
+	function updatePoints() {
+		var device = $('#select_device').val();
+
+		var url = "https://easyede-dev.azurewebsites.net/get_points?device=" + device;
+		
+		$('#graphtitle').val(device);
+		
+		$.ajax({
+			url : url
+		}).done(updatePoints_done);
+	}
+
+	function updatePoints_done(data) {
+		var select = $('#select_point');
+		select.empty();
+		for (var i = 0; i < data.length; i++) {
+			var option = $("<option></option>");
+			option.attr("value", data[i].ID);
+			if (i == 0) {
+				option.attr("selected", "selected");
+			}
+			option.text(data[i].Title);
+
+			select.append(option);
+		}
+		update();
+	}
+
+	function onButtonLeft() {
+		var from = moment($('#input_from').val(), 'DD/MM/YYYY HH:mm').toDate();
+		var to = moment($('#input_to').val(), 'DD/MM/YYYY HH:mm').toDate();
+		//var delta = to - from;
+		//from.setTime(from.getTime() - (delta / 2));
+		//to.setTime(to.getTime() - (delta / 2));
+		from.setDate(from.getDate() - 1)
+		to.setDate(to.getDate() - 1)
+		$('#input_from').val(moment(from).format("DD/MM/YYYY HH:mm"));
+		$('#input_to').val(moment(to).format("DD/MM/YYYY HH:mm"));
+		update();
+	}
+
+	function onButtonMinus() {
+		var from = moment($('#input_from').val(), 'DD/MM/YYYY HH:mm').toDate();
+		var to = moment($('#input_to').val(), 'DD/MM/YYYY HH:mm').toDate();
+		//var delta = to - from;
+		//from.setTime(from.getTime() - (delta / 2));
+		//to.setTime(to.getTime() + (delta / 2));
+		var delta = to - from;
+		if (delta > 0) {
+			to.setDate(to.getDate() - 1)
+			$('#input_from').val(moment(from).format("DD/MM/YYYY HH:mm"));
+			$('#input_to').val(moment(to).format("DD/MM/YYYY HH:mm"));
+			update();		
+		};
+
+	}
+
+	function onButtonPlus() {
+		var from = moment($('#input_from').val(), 'DD/MM/YYYY HH:mm').toDate();
+		var to = moment($('#input_to').val(), 'DD/MM/YYYY HH:mm').toDate();
+		var tonew = moment($('#input_to').val(), 'DD/MM/YYYY HH:mm').toDate();
+		tonew=tonew.setDate(tonew.getDate() + 1)
+		var delta = to - from;
+		//from.setTime(from.getTime() + (delta / 4));
+		//to.setTime(to.getTime() - (delta / 4));
+		if (tonew <= moment().toDate()){
+			to.setDate(to.getDate() + 1)
+			$('#input_from').val(moment(from).format("DD/MM/YYYY HH:mm"));
+			$('#input_to').val(moment(to).format("DD/MM/YYYY HH:mm"));
+			update();
+		};
+	}
+
+	function onButtonRight() {
+		var from = moment($('#input_from').val(), 'DD/MM/YYYY HH:mm').toDate();
+		var to = moment($('#input_to').val(), 'DD/MM/YYYY HH:mm').toDate();
+		var tonew = moment($('#input_to').val(), 'DD/MM/YYYY HH:mm').toDate();
+		tonew=tonew.setDate(tonew.getDate() + 1)
+		//var delta = to - from;
+		//from.setTime(from.getTime() + (delta / 2));
+		//to.setTime(to.getTime() + (delta / 2));
+		if (tonew <= moment().toDate()){
+			from.setDate(from.getDate() + 1)
+			to.setDate(to.getDate() + 1)
+			$('#input_from').val(moment(from).format("DD/MM/YYYY HH:mm"));
+			$('#input_to').val(moment(to).format("DD/MM/YYYY HH:mm"));
+			update();
+			
+		};
+	}
+
+	function update() {
+		var points = $('#select_point').val();
+		var from = moment($('#input_from').val(), 'DD/MM/YYYY HH:mm').toDate();
+		var to = moment($('#input_to').val(), 'DD/MM/YYYY HH:mm').toDate();
+
+		var url = "https://easyede-dev.azurewebsites.net/get_data?points=" + JSON.stringify(points) + '&from='
+				+ from.getTime() + '&to=' + to.getTime();
+		$.ajax({
+			url : url
+		}).done(update_done);
+	}
+
+	function update_done(data) {
+		$('#div_chart').height($('#div_chart').width() * 0.5);
+
+		for (var i = 0; i < data.length; i++) {
+			var row = data[i];
+			row[0] = new Date(row[0]);
+		}
+
+		// Create the data table.
+		dataTable = new google.visualization.DataTable();
+		var dataTable2 = new google.visualization.DataTable();
+		dataTable.addColumn('datetime', 'Date');
+		dataTable2.addColumn('datetime', 'Date');	
+		$('#select_point :selected').each(function(i, selected) {
+			dataTable.addColumn('number', $(selected).text());
+			dataTable2.addColumn('number', $(selected).text());
+		});
+		dataTable.addRows(data);
+		dataTable2.addRows(data);
+		
+		// Instantiate and draw our chart, passing in some options.
+		chart = new google.visualization.LineChart(document
+				.getElementById('div_chart'));
+		chart.draw(dataTable, options);
+			
+			
+		  var cssClassNames = {
+			'headerCell': 'table_header_center',
+			'tableCell': 'table_header_center'};
+		// Set table options
+        var tableoptions = {
+			showRowNumber: false,
+			sort: 'enable',
+			pageSize: 19,
+			page: 'enable',
+			width: '100%',
+			height: '100%',
+			cssClassNames: cssClassNames
+        };
+				
+		var formatter = new google.visualization.DateFormat({formatType: 'decimal'});
+        // Reformat our data.
+        formatter.format(dataTable2, 1);
+		// Instantiate and draw our table, passing in some options.
+		var table  = new google.visualization.Table(document
+				.getElementById('div_table'));
+		table.draw(dataTable2,tableoptions);
+
+		
+		
+		$('#graphtitle').html($("#select_point option:selected").text());
+		$('#tabletitle').html($("#select_point option:selected").text());
+	}
+	
+	function RunEntranceEffect() {
+    $("#paneldeviceselection").hide();
+    $("#paneltimeselection").hide();
+    $("#panelgraph").hide();
+	
+    $("#paneldeviceselection").show("slide", { direction: "left" }, 1000);
+    $("#paneldeviceselection").show("slide", { direction: "up" }, 1000);
+    $("#paneltimeselection").show("slide", { direction: "down" }, 1000);
+	}
+	
+	function drawChart(){
+		chart.draw(dataTable, options);
+	};
+		
+
+*/
+</script>
+
+
+
+
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	
+
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<!--<script src="https://easyede-dev.azurewebsites.net/js/ie10-viewport-bug-workaround.js"></script>-->
+
+	<!-- Google Charts JavaScript -->
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+	
+	
+	<!-- Flat Gauge -->
+	<script src="scripts/flatgauge.js"></script>
+	
+	<!-- Analog Gauge -->
+	<script src="scripts/gauge.min.js"></script>
+	
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	
+	<script>
+
+        /*
+
+
+		// Load the Visualization API and the packages.
+		google.load('visualization', '1.0', {
+			'packages' : [ 'corechart','table'  ]
+		});
+		//google.load('visualization', '1.0', {
+		//	'packages' : [ 'table' ]
+		//});
+
+
+        */
+        
+		$(document).ready(function() {	
+
+			showGauge();
+			showGauge1();
+			showGauge2();
+			showGauge3();
+			showGraph001();
+			showGraph003();
+
+                
+        }); 
+
+    </script>
+	
+	
+<script>
+function showGauge() {
+
+	var gauge = new Gauge({
+		renderTo    : 'gauge',
+		//width       : 300,
+		//height      : 300,
+		glow        : true,
+		units       : 'C',
+		title       : false,
+		minValue    : 0,
+		maxValue    : 50,
+		majorTicks  : ['0','10','20','30','40','50'],
+		minorTicks  : 2,
+		strokeTicks : false,
+		highlights  : [
+			{ from : 0,   to : 30, color : 'rgba(0,   255, 0, .15)' },
+			{ from : 30, to : 50, color : 'rgba(255, 255, 0, .15)' },
+			{ from : 100, to : 150, color : 'rgba(255, 30,  0, .25)' },
+			{ from : 150, to : 200, color : 'rgba(255, 0,  225, .25)' },
+			{ from : 200, to : 220, color : 'rgba(0, 0,  255, .25)' }
+		],
+		colors      : {
+			plate      : '#222',
+			majorTicks : '#f5f5f5',
+			minorTicks : '#ddd',
+			title      : '#fff',
+			units      : '#ccc',
+			numbers    : '#eee',
+			needle     : { start : 'rgba(240, 128, 128, 1)', end : 'rgba(255, 160, 122, .9)' }
+		}
+	});
+
+	gauge.onready = function() {
+		setInterval( function() {
+			//gauge.setValue( Math.random() * 100);
+            gauge.setValue(EDE_Value_TempSP);
+		}, 2000);
+	};
+
+	gauge.draw();
+};
+
+function showGauge1() {
+
+	var gauge = new Gauge({
+		renderTo    : 'gauge1',
+		//width       : 300,
+		//height      : 300,
+		glow        : true,
+		units       : 'Bar',
+		title       : false,
+		minValue    : 0,
+		maxValue    : 220,
+		majorTicks  : ['0','20','40','60','80','100','120','140','160','180','200','220'],
+		minorTicks  : 2,
+		strokeTicks : false,
+		highlights  : [
+			{ from : 0,   to : 50, color : 'rgba(0,   255, 0, .15)' },
+			{ from : 50, to : 100, color : 'rgba(255, 255, 0, .15)' },
+			{ from : 100, to : 150, color : 'rgba(255, 30,  0, .25)' },
+			{ from : 150, to : 200, color : 'rgba(255, 0,  225, .25)' },
+			{ from : 200, to : 220, color : 'rgba(0, 0,  255, .25)' }
+		],
+		colors      : {
+			plate      : '#222',
+			majorTicks : '#f5f5f5',
+			minorTicks : '#ddd',
+			title      : '#fff',
+			units      : '#ccc',
+			numbers    : '#eee',
+			needle     : { start : 'rgba(240, 128, 128, 1)', end : 'rgba(255, 160, 122, .9)' }
+		}
+	});
+
+	gauge.onready = function() {
+		setInterval( function() {
+			gauge.setValue(EDE_Value_Pressure);
+			//gauge.setValue( Math.random() * 220);
+		}, 3500);
+	};
+
+	gauge.draw();
+};
+function showGauge2() {
+
+	var gauge = new Gauge({
+		renderTo    : 'gauge2',
+		//width       : 300,
+		//height      : 300,
+		glow        : true,
+		units       : 'A',
+		title       : false,
+		minValue    : 0,
+		maxValue    : 260,
+		majorTicks  : ['0','20','40','60','80','100','120','140','160','180','200','220','240','260'],
+		minorTicks  : 2,
+		strokeTicks : false,
+		highlights  : [
+			{ from : 0,   to : 50, color : 'rgba(0,   255, 0, .15)' },
+			{ from : 50, to : 100, color : 'rgba(255, 255, 0, .15)' },
+			{ from : 100, to : 150, color : 'rgba(255, 30,  0, .25)' },
+			{ from : 150, to : 200, color : 'rgba(255, 0,  225, .25)' },
+			{ from : 200, to : 260, color : 'rgba(0, 0,  255, .25)' }
+		],
+		colors      : {
+			plate      : '#222',
+			majorTicks : '#f5f5f5',
+			minorTicks : '#ddd',
+			title      : '#fff',
+			units      : '#ccc',
+			numbers    : '#eee',
+			needle     : { start : 'rgba(240, 128, 128, 1)', end : 'rgba(255, 160, 122, .9)' }
+		}
+	});
+
+	gauge.onready = function() {
+		setInterval( function() {
+			gauge.setValue( Math.random() * 260);
+		}, 4000);
+	};
+
+	gauge.draw();
+};
+function showGauge3() {
+
+	var gauge = new Gauge({
+		renderTo    : 'gauge3',
+		//width       : 300,
+		//height      : 300,
+		glow        : true,
+		units       : 'V',
+		title       : false,
+		minValue    : 0,
+		maxValue    : 220,
+		majorTicks  : ['0','40','80','120','160','200','260','300'],
+		minorTicks  : 2,
+		strokeTicks : false,
+		highlights  : [
+			{ from : 0,   to : 50, color : 'rgba(0,   255, 0, .15)' },
+			{ from : 50, to : 100, color : 'rgba(255, 255, 0, .15)' },
+			{ from : 100, to : 150, color : 'rgba(255, 30,  0, .25)' },
+			{ from : 150, to : 200, color : 'rgba(255, 0,  225, .25)' },
+			{ from : 200, to : 300, color : 'rgba(0, 0,  255, .25)' }
+		],
+		colors      : {
+			plate      : '#222',
+			majorTicks : '#f5f5f5',
+			minorTicks : '#ddd',
+			title      : '#fff',
+			units      : '#ccc',
+			numbers    : '#eee',
+			needle     : { start : 'rgba(240, 128, 128, 1)', end : 'rgba(255, 160, 122, .9)' }
+		}
+	});
+
+	gauge.onready = function() {
+		setInterval( function() {
+			gauge.setValue( Math.random() * 300);
+		}, 3000);
+	};
+
+	gauge.draw();
+};
+</script>
+
+<script>
+
+function showGraph001() {
+	Highcharts.chart('graph_container001', {
+    chart: {
+        type: 'line',			
+		backgroundColor: "#000000",
+		borderColor: "#335cad"
+    },
+    title: {
+        text: 'Monthly Average Temperature'
+    },
+    subtitle: {
+        text: 'JCI Italy'
+    },
+    xAxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    },
+    yAxis: {
+        title: {
+            text: 'Temperature (°C)'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'Rome Office',
+        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+    }, {
+        name: 'Milan Office',
+        data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+    }]
+});
+  }	
+</script>
+
+
+<script>
+
+function showGraph002() {
+	Highcharts.chart('graph_container001', {
+		chart: {
+			type: 'area',
+			backgroundColor: "#000000",
+			borderColor: "#335cad"
+		},
+		title: {
+			text: 'Historic and Estimated Worldwide Population Distribution by Region',
+			style: {
+				color: '#ffffff',
+				fontWeight: 'bold',
+				fontSize: '12px',
+				fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+         	}            
+		},
+		subtitle: {
+			text: 'Source: Wikipedia.org',
+			style: {
+				color: '#A0A0A0',
+				fontSize: '12px',
+				fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+         	}   
+		},
+		legend: {
+              itemStyle: {
+                 color: '#A0A0A0'
+				 }
+        },
+		xAxis: {
+			categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
+			tickmarkPlacement: 'on',
+			title: {
+				enabled: false
+			},
+			labels: {
+                style: {
+                    color: 'white',
+                    fontSize:'12px'
+                	}
+				}
+		},
+		yAxis: {
+			title: {
+				text: 'Percent',
+				style:{
+                    color: 'white',
+                    fontSize: '12px',
+					fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+                }
+			},	
+			labels: {
+                style: {
+                    color: 'white',
+                    fontSize:'12px'
+                	}
+				}	
+		},
+		tooltip: {
+			pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} millions)<br/>',
+			split: true
+		},
+		plotOptions: {
+			area: {
+				stacking: 'percent',
+				lineColor: '#ffffff',
+				lineWidth: 1,
+				marker: {
+					lineWidth: 1,
+					lineColor: '#ffffff'
+				}
+			}
+		},
+
+		credits: {
+			enabled: false,
+			href: "http://www.highcharts.com"
+		},
+
+
+		series: [{
+			name: 'Asia',
+			data: [502, 635, 809, 947, 1402, 3634, 5268]
+		}, {
+			name: 'Africa',
+			data: [106, 107, 111, 133, 221, 767, 1766]
+		}, {
+			name: 'Europe',
+			data: [163, 203, 276, 408, 547, 729, 628]
+		}, {
+			name: 'America',
+			data: [18, 31, 54, 156, 339, 818, 1201]
+		}, {
+			name: 'Oceania',
+			data: [2, 2, 2, 6, 13, 30, 46]
+		}]
+	});
+};	
+
+
+function showGraph003() {
+
+ Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
+
+    Highcharts.chart('graph_container003', {
+        chart: {
+            type: 'spline',
+            animation: Highcharts.svg, // don't animate in old IE
+            marginRight: 10,
+			backgroundColor: "#000000",
+			borderColor: "#335cad",
+            events: {
+                load: function () {
+
+                    // set up the updating of the chart each second
+                    var series = this.series[0];
+                    setInterval(function () {
+                        var x = (new Date()).getTime(), // current time
+							y = EDE_Value_TempSP;
+                            //y = Math.random();
+                        series.addPoint([x, y], true, true);
+                    }, 1000);
+                }
+            }
+        },
+        title: {
+            text: 'Live Temperature'
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: 'Value'
+            },
+
+			max: 35,
+			min: 0,
+			
+
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+
+    	},
+       
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                    Highcharts.numberFormat(this.y, 2);
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+		credits: {
+			enabled: false,
+			href: "http://www.highcharts.com"
+		},
+        series: [{
+            name: 'temperature',
+            data: (function () {
+                // generate an array of random data
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+						y:EDE_Value_TempSP
+                        //y: Math.random()
+                    });
+                }
+                return data;
+            }())
+        }]
+    });
+};
+</script>
+
+
+<script>
+function myTimer()
+{	
+			
+		i++;
+
+		//refresh_table();
+        $.ajax({
+                type: "GET",
+                url: "http://sisedemos.ddns.net:9090/services/ede/items/60/value",
+                crossDomain: true,
+                dataType: "JSON",
+                contentType:"application/json; charset=utf-8",
+            
+                success: function(data) {
+                        EDE_Value_TempSP=parseFloat(data.item.value);
+                        //$( "#ValueEDE" ).text(EDE_Value_TempSP);
+                },
+
+                failure: function (err) {
+                    alert("err");                        
+                }
+ 
+            });
+			//refresh_table();
+        $.ajax({
+                type: "GET",
+                url: "http://sisedemos.ddns.net:9090/services/ede/items/71/value",
+                crossDomain: true,
+                dataType: "JSON",
+                contentType:"application/json; charset=utf-8",
+            
+                success: function(data) {
+                        EDE_Value_Pressure=parseFloat(data.item.value);
+                        //$( "#ValueEDE" ).text(EDE_Value_TempSP);
+                },
+
+                failure: function (err) {
+                    alert("err");                        
+                }
+ 
+            });
+		
+}
+
+</script>
+</body>
 </html>
+
+
